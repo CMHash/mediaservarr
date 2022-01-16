@@ -190,7 +190,7 @@ if ! getent group "$app_guid" && "$app_guid" != "$app_uid" >/dev/null; then
     echo "Group [$app_guid] created"
 fi
 if ! getent passwd "$app_uid" >/dev/null; then
-    useradd --system --groups "$app_guid" "$app_uid"
+    useradd -g "$app_guid" "$app_uid"
     echo "User [$app_uid] created and added to Group [$app_guid]"
 else
     echo "User [$app_uid] already exists"
